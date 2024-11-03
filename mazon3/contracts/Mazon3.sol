@@ -21,6 +21,11 @@ contract Mazon3 {
 
 //    Event
 event List(string name, uint256 cost, uint256 quantity);
+
+modifier onlyOwner(){
+    require(owner == msg.sender);
+    _;
+}
    
     //  List Products
     function list(
@@ -31,7 +36,7 @@ event List(string name, uint256 cost, uint256 quantity);
     uint256 _cost,
     uint256 _rating,
     uint256  _stock
-) public  {
+) public onlyOwner {
         // Code goes here
     
         // Create Item struct
@@ -52,6 +57,9 @@ event List(string name, uint256 cost, uint256 quantity);
     emit List( _name, _cost, _stock);
     }
     //   Buy Products
+    function buy(uint _id) public {
+        
+    }
     // Withdraw funds
 
 }
