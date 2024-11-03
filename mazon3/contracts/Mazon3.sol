@@ -18,6 +18,9 @@ contract Mazon3 {
     uint256  stock;
    }
    mapping(uint256 => Item) public items;
+
+//    Event
+event List(string name, uint256 cost, uint256 quantity);
    
     //  List Products
     function list(
@@ -43,6 +46,10 @@ contract Mazon3 {
             );
 
         // Save Item struct to blockchain
+        items[_id] = item;
+
+        // Emit event
+    emit List( _name, _cost, _stock);
     }
     //   Buy Products
     // Withdraw funds
